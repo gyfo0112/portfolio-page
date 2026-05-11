@@ -1,0 +1,111 @@
+.navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  transition: padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.navbar-wrapper.scrolled {
+  padding: 16px 24px;
+}
+.navbar {
+  width: 100%;
+  max-width: 1536px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 192px;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+  border-radius: 0px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.navbar--floating {
+  width: 100%;
+  max-width: 860px;
+  height: 56px;
+  padding: 0 32px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 100px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.navbar__logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0a0a0a;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease;
+}
+.navbar__logo:hover {
+  color: #4f8ef7;
+}
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+.navbar__link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  position: relative;
+}
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #4f8ef7;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+.navbar__link:hover,
+.navbar__link.active {
+  color: #0a0a0a;
+}
+.navbar__link.active::after,
+.navbar__link:hover::after {
+  width: 100%;
+}
+.navbar__cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  background: #4f8ef7;
+  color: white;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.navbar__cta:hover {
+  background: #3a7ae0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(79, 142, 247, 0.35);
+}
+@media (max-width: 1280px) {
+  .navbar { padding: 0 80px; }
+}
+@media (max-width: 768px) {
+  .navbar { padding: 0 24px; }
+  .navbar__links { gap: 20px; }
+  .navbar--floating { max-width: calc(100% - 48px); }
+}
