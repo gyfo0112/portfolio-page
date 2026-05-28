@@ -15,14 +15,24 @@ export default function Projects() {
         <div className="main-projects__grid">
           {mainProjects.map((project, i) => (
             <div key={project.id} className={`main-card reveal reveal-delay-${i + 1}`}>
-              <div className="main-card__image">
-                {project.image ? (
-                  <img src={project.image} alt={project.name} />
-                ) : (
-                  <div className="main-card__placeholder">
-                    <span>프로젝트 이미지</span>
+              <div className="browser-mockup">
+                <div className="browser-bar">
+                  <div className="browser-dots">
+                    <span className="dot dot--red" />
+                    <span className="dot dot--yellow" />
+                    <span className="dot dot--green" />
                   </div>
-                )}
+                  <div className="browser-url" />
+                </div>
+                <div className="browser-screen">
+                  {project.image ? (
+                    <img src={project.image} alt={project.name} />
+                  ) : (
+                    <div className="browser-placeholder">
+                      <span>{project.name}</span>
+                    </div>
+                  )}
+                </div>
               </div>
               <div className="main-card__body">
                 <div className="main-card__category">{project.category}</div>
@@ -33,6 +43,7 @@ export default function Projects() {
                     <span key={j} className="skill-pill">{tag}</span>
                   ))}
                 </div>
+                <div className="main-card__spacer" />
                 <div className="main-card__links">
                   {project.github && (
                     <a href={project.github} target="_blank" rel="noreferrer" className="card-link">GitHub →</a>

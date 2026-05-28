@@ -1,0 +1,34 @@
+.theme-toggle {
+  position: fixed;
+  bottom: 100px;
+  right: 40px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(79,142,247,0.25);
+  color: #4f8ef7;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.theme-toggle:hover {
+  background: #4f8ef7;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(79,142,247,0.35);
+}
+
+[data-theme='dark'] .theme-toggle {
+  background: rgba(20,21,28,0.7) !important;
+  border-color: rgba(255,255,255,0.1) !important;
+  color: #6aa3f8 !important;
+}

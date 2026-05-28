@@ -10,7 +10,7 @@ export default function About() {
     { icon: MailIcon, label: '이메일', value: personalInfo.email, href: `mailto:${personalInfo.email}` },
     { icon: PhoneIcon, label: '전화번호', value: personalInfo.phone, href: `tel:${personalInfo.phone}` },
     { icon: GithubIcon, label: 'GitHub', value: 'github.com/gyfo0112', href: personalInfo.github },
-    { icon: LinkIcon, label: '노션', value: 'notion 바로가기', href: 'https://www.notion.so/32f7290dbe06808da5a1cd775d2b6852?source=copy_link' },
+    { icon: LinkIcon, label: '노션', value: 'notion 바로가기', href: 'https://www.notion.so/3657290dbe06806fa7ddcb8ddb2fa8ab?source=copy_link' },
   ];
 
   const infoItems = [

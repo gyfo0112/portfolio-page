@@ -1,5 +1,6 @@
 import './index.css';
 import './styles/scroll.css';
+import './styles/darkmode.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -7,6 +8,8 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import BlobBackground from './components/BlobBackground';
+import ThemeToggle from './components/ThemeToggle';
 import { useScrollAnimation } from './hooks/useScrollAnimation';
 
 function App() {
@@ -14,15 +17,19 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-      </main>
-      <Footer />
+      <BlobBackground />
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+        </main>
+        <Footer />
+      </div>
       <ScrollToTop />
+      <ThemeToggle />
     </>
   );
 }
