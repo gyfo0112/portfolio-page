@@ -41,8 +41,7 @@ export const mainProjects = [
     frameworks: ['React / Vite', 'MySql / AWS S3'],
     tools: ['Docker / Nginx / Git'],
     github: 'https://github.com/gyfo0112/haru-piece',
-    live: 'http://harupiece.site',
-    live: null,
+    live: 'http://www.harupiece.site',
     image: project1,
   },
   {
