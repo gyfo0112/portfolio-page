@@ -156,7 +156,7 @@
   gap: 6px;
 }
 
-skill-pill {
+.skill-pill {
   display: inline-flex;
   align-items: center;
   padding: 5px 12px;
