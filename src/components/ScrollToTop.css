@@ -1,46 +1,27 @@
-.scroll-to-top {
+/* ── Wrapper: 링 + 버튼을 함께 중앙 정렬 ── */
+.scroll-to-top-wrap {
   position: fixed;
-  bottom: 40px;
-  right: 40px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: none;
-  color: #4f8ef7;
-  cursor: pointer;
+  bottom: 28px;
+  right: 28px;
+  width: 64px;      /* 링 SVG 크기와 동일 */
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   opacity: 0;
   transform: translateY(16px);
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease,
-    background 0.3s ease,
-    color 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   pointer-events: none;
   z-index: 999;
 }
 
-.scroll-to-top.visible {
+.scroll-to-top-wrap.visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: all;
 }
 
-.scroll-to-top:hover {
-  background: #4f8ef7;
-  color: white;
-  box-shadow: 0 8px 28px rgba(79, 142, 247, 0.4);
-  transform: translateY(-3px);
-}
-
-/* SVG 링 */
+/* ── 링 SVG: wrapper를 꽉 채움, 버튼 뒤에 위치 ── */
 .scroll-to-top__ring {
   position: absolute;
   top: 0;
@@ -53,31 +34,78 @@
   stroke: rgba(79, 142, 247, 0.15);
 }
 
-/* 진행 원 — JS ref로 직접 제어하므로 transition 없음 */
+/* 진행 원 */
 .scroll-to-top__progress {
-  /* transition 없음: 실시간 즉시 반영 */
+  /* 실시간 직접 DOM 제어 */
 }
 
-/* 호버 시 링 색상 → 흰색으로 */
-.scroll-to-top:hover .scroll-to-top__track {
-  stroke: rgba(255, 255, 255, 0.2);
-}
-.scroll-to-top:hover .scroll-to-top__progress {
-  stroke: rgba(255, 255, 255, 0.9);
-}
-
-/* 화살표 아이콘 */
-.scroll-to-top__arrow {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1;
-  position: relative;
+/* ── 버튼: 링 안에 중앙 정렬 ── */
+.scroll-to-top__btn {
+  position: relative;  /* 링 SVG 위에 */
   z-index: 1;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  color: #4f8ef7;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  flex-shrink: 0;
 }
 
+.scroll-to-top__btn:hover {
+  background: #4f8ef7;
+  color: white;
+  box-shadow: 0 8px 28px rgba(79, 142, 247, 0.4);
+  transform: translateY(-2px);
+}
+
+/* 호버 시 링 색상 변경 */
+.scroll-to-top-wrap:hover .scroll-to-top__track {
+  stroke: rgba(79, 142, 247, 0.25);
+}
+.scroll-to-top-wrap:hover .scroll-to-top__progress {
+  stroke: rgba(255, 255, 255, 0.85);
+}
+
+/* SVG 화살표 아이콘 */
+.scroll-to-top__arrow {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* 다크모드 */
+[data-theme='dark'] .scroll-to-top__btn {
+  background: rgba(20, 21, 32, 0.7);
+  border-color: rgba(255, 255, 255, 0.09);
+  color: #6aa3f8;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+[data-theme='dark'] .scroll-to-top__btn:hover {
+  background: #4f8ef7;
+  color: white;
+}
+
+[data-theme='dark'] .scroll-to-top__track {
+  stroke: rgba(106, 163, 248, 0.15);
+}
+
+/* ThemeToggle 위치: wrapper(64px) + bottom(28px) + gap(12px) = 104px */
 @media (max-width: 768px) {
-  .scroll-to-top {
-    bottom: 36px;
-    right: 20px;
+  .scroll-to-top-wrap {
+    bottom: 20px;
+    right: 16px;
   }
 }

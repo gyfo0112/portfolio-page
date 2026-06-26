@@ -1,7 +1,8 @@
 .theme-toggle {
   position: fixed;
-  bottom: 100px;
-  right: 40px;
+  bottom: 104px;  /* scroll-to-top-wrap(28+64) + gap(12) = 104 */
+  right: 32px;
+
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -35,8 +36,8 @@
 
 @media (max-width: 768px) {
   .theme-toggle {
-    bottom: 90px;
-    right: 20px;
+    bottom: 96px;  /* scroll-to-top(20) + 64(height) + 12(gap) = 96 */
+    right: 16px;
     width: 44px;
     height: 44px;
   }

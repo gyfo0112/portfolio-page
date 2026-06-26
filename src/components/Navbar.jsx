@@ -47,36 +47,23 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 80);
 
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const docHeight = document.documentElement.scrollHeight;
+      // 모든 섹션을 아래→위 순서로 체크 (먼저 매칭된 섹션이 현재 위치)
+      const allSections = ['contact', 'mini-projects', 'main-projects', 'skills', 'about', 'home'];
 
-      if (scrollY + windowHeight >= docHeight - 100) {
-        setActiveSection('mini-projects');
-        return;
-      }
-
-      const miniEl = document.getElementById('mini-projects');
-      if (miniEl) {
-        const miniRect = miniEl.getBoundingClientRect();
-        if (miniRect.top <= 150) {
-          setActiveSection('mini-projects');
+      for (const id of allSections) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= 130) {
+          // contact 섹션은 nav 링크 없음 → 아무것도 활성화 안 함
+          setActiveSection(id === 'contact' ? '' : id);
           return;
         }
       }
 
-      const sections = ['home', 'about', 'skills', 'main-projects'];
-      for (const id of sections) {
-        const el = document.getElementById(id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 120 && rect.bottom >= 120) {
-            setActiveSection(id);
-            break;
-          }
-        }
-      }
+      setActiveSection('home');
     };
+
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);

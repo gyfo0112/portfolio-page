@@ -1,9 +1,7 @@
 /* ═══════════════════════════════════════════════════════
    PREMIUM FROSTED GLASS SYSTEM
-   - 배경: 좌상→우하 그라데이션 (빛이 좌상에서 들어오는 효과)
-   - 내부 반사: inset box-shadow 다층 구조
-   - blur: saturate + brightness 강화
-   - 테두리: 상단/좌측 밝고 하단/우측 어두워지는 자연광 모사
+   ─ 크롬 성능 최적화: blur 값 감소, backface-visibility 제거
+   ─ will-change: transform 으로 GPU 레이어 사전 예약
    ═══════════════════════════════════════════════════════ */
 
 /* ── Navbar ── */
@@ -13,8 +11,8 @@
     rgba(255,255,255,0.62) 0%,
     rgba(255,255,255,0.42) 100%
   ) !important;
-  backdrop-filter: blur(48px) saturate(200%) brightness(1.06) !important;
-  -webkit-backdrop-filter: blur(48px) saturate(200%) brightness(1.06) !important;
+  backdrop-filter: blur(24px) saturate(180%) brightness(1.06) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(1.06) !important;
   border-bottom: 1px solid rgba(255,255,255,0.75) !important;
   box-shadow:
     0 1px 0 rgba(255,255,255,0.9),
@@ -27,8 +25,8 @@
     rgba(255,255,255,0.68) 0%,
     rgba(255,255,255,0.45) 100%
   ) !important;
-  backdrop-filter: blur(56px) saturate(220%) brightness(1.08) !important;
-  -webkit-backdrop-filter: blur(56px) saturate(220%) brightness(1.08) !important;
+  backdrop-filter: blur(32px) saturate(200%) brightness(1.08) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(200%) brightness(1.08) !important;
   border: 1px solid rgba(255,255,255,0.8) !important;
   box-shadow:
     0 8px 40px rgba(79,142,247,0.09),
@@ -45,8 +43,9 @@
     rgba(255,255,255,0.48) 60%,
     rgba(255,255,255,0.38) 100%
   ) !important;
-  backdrop-filter: blur(40px) saturate(180%) brightness(1.05) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(180%) brightness(1.05) !important;
+  /* 크롬 성능: blur 20px (40→20), backface-visibility 제거 */
+  backdrop-filter: blur(20px) saturate(160%) brightness(1.04) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) brightness(1.04) !important;
   border: 1px solid rgba(255,255,255,0.88) !important;
   box-shadow:
     0 8px 40px rgba(0,0,0,0.08),
@@ -55,10 +54,7 @@
     inset 1px 0 0 rgba(255,255,255,0.7),
     inset 0 -1px 0 rgba(255,255,255,0.25),
     inset -1px 0 0 rgba(255,255,255,0.2) !important;
-  /* 까빡임 방지: hover transform 전에 GPU 레이어 미리 생성 */
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
+  will-change: transform; /* GPU 레이어 사전 예약 */
 }
 
 /* ── Mini Cards ── */
@@ -69,8 +65,8 @@
     rgba(255,255,255,0.46) 60%,
     rgba(255,255,255,0.36) 100%
   ) !important;
-  backdrop-filter: blur(36px) saturate(170%) brightness(1.04) !important;
-  -webkit-backdrop-filter: blur(36px) saturate(170%) brightness(1.04) !important;
+  backdrop-filter: blur(16px) saturate(150%) brightness(1.03) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%) brightness(1.03) !important;
   border: 1px solid rgba(255,255,255,0.85) !important;
   box-shadow:
     0 4px 24px rgba(0,0,0,0.06),
@@ -78,9 +74,7 @@
     inset 0 1px 0 rgba(255,255,255,1),
     inset 1px 0 0 rgba(255,255,255,0.65),
     inset 0 -1px 0 rgba(255,255,255,0.2) !important;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
+  will-change: transform;
 }
 
 /* ── Skill Cards ── */
@@ -90,16 +84,14 @@
     rgba(255,255,255,0.68) 0%,
     rgba(255,255,255,0.46) 100%
   ) !important;
-  backdrop-filter: blur(36px) saturate(170%) brightness(1.04) !important;
-  -webkit-backdrop-filter: blur(36px) saturate(170%) brightness(1.04) !important;
+  backdrop-filter: blur(16px) saturate(150%) brightness(1.03) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%) brightness(1.03) !important;
   border: 1px solid rgba(255,255,255,0.85) !important;
   box-shadow:
     0 8px 32px rgba(0,0,0,0.07),
     inset 0 1px 0 rgba(255,255,255,1),
     inset 1px 0 0 rgba(255,255,255,0.6) !important;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
+  will-change: transform;
 }
 
 /* ── Contact Cards ── */
@@ -109,13 +101,14 @@
     rgba(255,255,255,0.65) 0%,
     rgba(255,255,255,0.44) 100%
   ) !important;
-  backdrop-filter: blur(36px) saturate(170%) brightness(1.04) !important;
-  -webkit-backdrop-filter: blur(36px) saturate(170%) brightness(1.04) !important;
+  backdrop-filter: blur(16px) saturate(150%) brightness(1.03) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%) brightness(1.03) !important;
   border: 1px solid rgba(255,255,255,0.82) !important;
   box-shadow:
     0 4px 24px rgba(0,0,0,0.05),
     inset 0 1px 0 rgba(255,255,255,1),
     inset 1px 0 0 rgba(255,255,255,0.55) !important;
+  will-change: transform;
 }
 
 /* ── About Info ── */
@@ -125,8 +118,8 @@
     rgba(255,255,255,0.60) 0%,
     rgba(255,255,255,0.40) 100%
   ) !important;
-  backdrop-filter: blur(32px) saturate(160%) brightness(1.04) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(160%) brightness(1.04) !important;
+  backdrop-filter: blur(16px) saturate(150%) brightness(1.03) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%) brightness(1.03) !important;
   border: 1px solid rgba(255,255,255,0.78) !important;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.95),
@@ -140,34 +133,32 @@
     rgba(255,255,255,0.55) 0%,
     rgba(255,255,255,0.38) 100%
   ) !important;
-  backdrop-filter: blur(40px) saturate(170%) brightness(1.04) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(170%) brightness(1.04) !important;
+  backdrop-filter: blur(20px) saturate(160%) brightness(1.04) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) brightness(1.04) !important;
   border-top: 1px solid rgba(255,255,255,0.75) !important;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.9) !important;
 }
 
 /* ── Scroll to Top ── */
-.scroll-to-top {
+.scroll-to-top__btn {
   background: linear-gradient(
     145deg,
-    rgba(255,255,255,0.72) 0%,
-    rgba(255,255,255,0.52) 100%
+    rgba(255,255,255,0.88) 0%,
+    rgba(255,255,255,0.65) 100%
   ) !important;
-  backdrop-filter: blur(32px) saturate(180%) brightness(1.06) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(180%) brightness(1.06) !important;
-  border: 1px solid rgba(255,255,255,0.85) !important;
+  backdrop-filter: blur(16px) saturate(160%) brightness(1.05) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(160%) brightness(1.05) !important;
+  border: 1px solid rgba(255,255,255,0.9) !important;
   box-shadow:
     0 4px 20px rgba(0,0,0,0.08),
     inset 0 1px 0 rgba(255,255,255,1),
     inset 1px 0 0 rgba(255,255,255,0.6) !important;
 }
-.scroll-to-top.visible:hover {
+.scroll-to-top__btn:hover {
   background: #4f8ef7 !important;
   color: white !important;
   box-shadow: 0 8px 28px rgba(79,142,247,0.35) !important;
-  transform: translateY(-3px) !important;
-  opacity: 1 !important;
 }
 
 /* ── Skill Pill ── */
@@ -177,8 +168,8 @@
     rgba(255,255,255,0.80) 0%,
     rgba(255,255,255,0.58) 100%
   ) !important;
-  backdrop-filter: blur(16px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
   border: 1px solid rgba(255,255,255,0.82) !important;
   box-shadow: inset 0 1px 0 rgba(255,255,255,1) !important;
   color: #374151 !important;
@@ -194,7 +185,7 @@
 }
 
 /* ══════════════════════════════════════
-   DARK MODE - 동일한 구조, 어두운 색조
+   DARK MODE
    ══════════════════════════════════════ */
 
 [data-theme='dark'] .navbar {
@@ -203,8 +194,8 @@
     rgba(255,255,255,0.06) 0%,
     rgba(255,255,255,0.03) 100%
   ) !important;
-  backdrop-filter: blur(48px) saturate(180%) brightness(0.9) !important;
-  -webkit-backdrop-filter: blur(48px) saturate(180%) brightness(0.9) !important;
+  backdrop-filter: blur(24px) saturate(160%) brightness(0.9) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) brightness(0.9) !important;
   border-bottom: 1px solid rgba(255,255,255,0.07) !important;
   box-shadow: 0 4px 24px rgba(0,0,0,0.35) !important;
 }
@@ -215,8 +206,8 @@
     rgba(255,255,255,0.08) 0%,
     rgba(255,255,255,0.04) 100%
   ) !important;
-  backdrop-filter: blur(56px) saturate(180%) brightness(0.85) !important;
-  -webkit-backdrop-filter: blur(56px) saturate(180%) brightness(0.85) !important;
+  backdrop-filter: blur(32px) saturate(160%) brightness(0.85) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(160%) brightness(0.85) !important;
   border: 1px solid rgba(255,255,255,0.08) !important;
   box-shadow:
     0 8px 40px rgba(0,0,0,0.5),
@@ -231,8 +222,8 @@
     rgba(255,255,255,0.04) 60%,
     rgba(255,255,255,0.02) 100%
   ) !important;
-  backdrop-filter: blur(40px) saturate(160%) brightness(0.88) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(160%) brightness(0.88) !important;
+  backdrop-filter: blur(20px) saturate(140%) brightness(0.88) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(140%) brightness(0.88) !important;
   border: 1px solid rgba(255,255,255,0.09) !important;
   box-shadow:
     0 8px 40px rgba(0,0,0,0.35),
@@ -247,8 +238,8 @@
     rgba(255,255,255,0.07) 0%,
     rgba(255,255,255,0.03) 100%
   ) !important;
-  backdrop-filter: blur(36px) saturate(150%) brightness(0.88) !important;
-  -webkit-backdrop-filter: blur(36px) saturate(150%) brightness(0.88) !important;
+  backdrop-filter: blur(16px) saturate(130%) brightness(0.88) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(130%) brightness(0.88) !important;
   border: 1px solid rgba(255,255,255,0.08) !important;
   box-shadow:
     0 4px 24px rgba(0,0,0,0.3),
@@ -262,8 +253,8 @@
     rgba(255,255,255,0.07) 0%,
     rgba(255,255,255,0.03) 100%
   ) !important;
-  backdrop-filter: blur(36px) saturate(150%) brightness(0.88) !important;
-  -webkit-backdrop-filter: blur(36px) saturate(150%) brightness(0.88) !important;
+  backdrop-filter: blur(16px) saturate(130%) brightness(0.88) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(130%) brightness(0.88) !important;
   border: 1px solid rgba(255,255,255,0.08) !important;
   box-shadow:
     0 8px 32px rgba(0,0,0,0.3),
@@ -276,8 +267,8 @@
     rgba(255,255,255,0.07) 0%,
     rgba(255,255,255,0.03) 100%
   ) !important;
-  backdrop-filter: blur(36px) saturate(150%) brightness(0.88) !important;
-  -webkit-backdrop-filter: blur(36px) saturate(150%) brightness(0.88) !important;
+  backdrop-filter: blur(16px) saturate(130%) brightness(0.88) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(130%) brightness(0.88) !important;
   border: 1px solid rgba(255,255,255,0.08) !important;
   box-shadow:
     0 4px 24px rgba(0,0,0,0.28),
@@ -290,8 +281,8 @@
     rgba(255,255,255,0.06) 0%,
     rgba(255,255,255,0.03) 100%
   ) !important;
-  backdrop-filter: blur(32px) saturate(140%) brightness(0.88) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(140%) brightness(0.88) !important;
+  backdrop-filter: blur(16px) saturate(130%) brightness(0.88) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(130%) brightness(0.88) !important;
   border: 1px solid rgba(255,255,255,0.07) !important;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.08) !important;
 }
@@ -302,19 +293,19 @@
     rgba(255,255,255,0.05) 0%,
     rgba(255,255,255,0.02) 100%
   ) !important;
-  backdrop-filter: blur(40px) saturate(150%) brightness(0.85) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(150%) brightness(0.85) !important;
+  backdrop-filter: blur(20px) saturate(140%) brightness(0.85) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(140%) brightness(0.85) !important;
   border-top: 1px solid rgba(255,255,255,0.07) !important;
 }
 
-[data-theme='dark'] .scroll-to-top {
+[data-theme='dark'] .scroll-to-top__btn {
   background: linear-gradient(
     145deg,
     rgba(255,255,255,0.08) 0%,
     rgba(255,255,255,0.04) 100%
   ) !important;
-  backdrop-filter: blur(32px) saturate(160%) brightness(0.88) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(160%) brightness(0.88) !important;
+  backdrop-filter: blur(16px) saturate(140%) brightness(0.88) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(140%) brightness(0.88) !important;
   border: 1px solid rgba(255,255,255,0.09) !important;
   box-shadow:
     0 4px 20px rgba(0,0,0,0.35),
@@ -327,8 +318,8 @@
     rgba(255,255,255,0.08) 0%,
     rgba(255,255,255,0.04) 100%
   ) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   border: 1px solid rgba(255,255,255,0.08) !important;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.1) !important;
   color: #8889a0 !important;
