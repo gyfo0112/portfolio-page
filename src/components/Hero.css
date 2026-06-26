@@ -132,6 +132,14 @@
   gap: 12px;
 }
 
+/* 다크모드: 연락하기 버튼 */
+[data-theme='dark'] .btn-secondary {
+  color: rgba(255, 255, 255, 0.75);
+}
+[data-theme='dark'] .btn-secondary:hover {
+  color: #6aa3f8;
+}
+
 /* Right - Orbit */
 .hero__right {
   flex: 0 0 48%;
@@ -142,8 +150,8 @@
 
 .orbit-container {
   position: relative;
-  width: 620px;
-  height: 620px;
+  width: 760px;
+  height: 760px;
   /* transition 제거: 파티클 transform과 컨테이너 transform 충돌 방지 */
 }
 
@@ -235,7 +243,7 @@
 
 @media (max-width: 1280px) {
   .hero { padding: 0 80px; }
-  .orbit-container { width: 500px; height: 500px; }
+  .orbit-container { width: 600px; height: 600px; }
 }
 
 @media (max-width: 768px) {

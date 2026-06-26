@@ -2,13 +2,13 @@ import { useEffect, useRef, useCallback, useState } from 'react';
 import { personalInfo } from '../data/portfolio';
 import './Hero.css';
 
-const NUM          = 200;
-const R            = 155;
+const NUM          = 450;
+const R            = 200;
 const φ            = (1 + Math.sqrt(5)) / 2;
 const BASE_SPEED   = 0.004;
 const MIN_SPEED    = 0.001;
 const ACCEL_STEP   = 0.001;    // gather 후 재가속: MIN→BASE in 3 frames
-const PROXIMITY_R  = 55;
+const PROXIMITY_R  = 70;
 const PROXIMITY_R2 = PROXIMITY_R * PROXIMITY_R;
 const BASE_SIZE    = 3;        // CSS 기본 파티클 px (scale의 기준)
 
