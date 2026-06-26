@@ -117,5 +117,6 @@ export const miniProjects = [
   { id: 4, name: 'Timer-App', description: '간단하게 만든 타이머', tags: ['React', 'Vite'], github: 'https://github.com/gyfo0112', live: 'https://timer-app-pi-flame.vercel.app/' },
   { id: 5, name: 'EndWordGame', description: '간단하게 즐길 수 있는 끝말잇기 게임', tags: ['React', 'Vite', 'Sass'], github: 'https://github.com/gyfo0112', live: 'https://end-word-game-three.vercel.app' },
   { id: 6, name: 'Router', description: '간단한 웹페이지 레이아웃 페이지', tags: ['React', 'Vite', 'React-Router', 'Swiper'], github: 'https://github.com/gyfo0112', live: 'https://router-exam-od2t.vercel.app/' },
-  { id: 7, name: 'Naver Shop Search', description: '네이버 쇼핑 API를 활용한 상품 검색 및 즐겨찾기 웹 서비스', tags: ['Python', 'FastAPI', 'MongoDB', 'Naver API'], github: 'https://github.com/gyfo0112/bookbook2', live: 'https://bookbook2.vercel.app' },
+  { id: 7, name: 'Soundiary', description: '음악과 함께 하루를 기록하는 뮤직 다이어리 앱', tags: ['React', 'Vite', 'iTunes API', 'Web Audio API', 'html2canvas'], github: 'https://github.com/gyfo0112', live: 'https://soundiary-7tsf.vercel.app/' },
+  { id: 8, name: 'Naver Shop Search', description: '네이버 쇼핑 API를 활용한 상품 검색 및 즐겨찾기 웹 서비스', tags: ['Python', 'FastAPI', 'MongoDB', 'Naver API'], github: 'https://github.com/gyfo0112/bookbook2', live: 'https://bookbook2.vercel.app' },
 ];
