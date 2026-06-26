@@ -1,0 +1,14 @@
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #4f8ef7, #818cf8, #a78bfa);
+  z-index: 9999;
+  border-radius: 0 2px 2px 0;
+  transition: width 0.08s linear;
+  box-shadow:
+    0 0 8px rgba(79, 142, 247, 0.6),
+    0 0 20px rgba(129, 140, 248, 0.3);
+  pointer-events: none;
+}

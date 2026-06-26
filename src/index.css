@@ -17,7 +17,8 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: auto; } /* JS RAF 커스텀 스크롤 사용 → CSS smooth 비활성화 */
+
 body {
   font-family: 'Noto Sans KR', sans-serif;
   background: var(--bg);

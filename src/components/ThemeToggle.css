@@ -32,3 +32,12 @@
   border-color: rgba(255,255,255,0.1) !important;
   color: #6aa3f8 !important;
 }
+
+@media (max-width: 768px) {
+  .theme-toggle {
+    bottom: 90px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+}

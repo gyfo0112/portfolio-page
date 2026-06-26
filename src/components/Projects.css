@@ -118,14 +118,15 @@
   font-weight: 500;
 }
 
-.main-card__body { min-height: 220px;
+.main-card__body {
+  min-height: 220px;
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  /* backdrop-filter 제거: 부모 .main-card에 이미 blur 있음
+     중첩 backdrop-filter → hover transform 시 GPU 재계산 → 깜빡임 */
+  background: transparent;
 }
 
 .main-card__category {
@@ -278,57 +279,171 @@
 .main-card__links { display: flex; gap: 16px; padding-top: 12px; margin-top: auto; border-top: 1px solid rgba(0,0,0,0.06); }
 .main-card { display: flex; flex-direction: column; } .main-card__body { flex: 1; display: flex; flex-direction: column; }
 
-.browser-mockup {
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.8);
+
+/* ═══════════════════════════════════════
+   MOCKUP SYSTEM  (browser / phone)
+   ═══════════════════════════════════════ */
+
+/* 공통 */
+.mockup {
+  position: relative;
   overflow: hidden;
 }
-.browser-bar {
+
+.card-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  background: rgba(79, 142, 247, 0.92);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  letter-spacing: 0.03em;
+  z-index: 2;
+}
+.main-card:hover .card-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── 브라우저 목업 ── */
+.mockup--browser {
+  background: #e8ecf0;
+  padding: 10px 10px 0;
+  border-radius: 12px 12px 0 0;
+}
+
+.mockup__bar {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 14px;
-  background: rgba(245,246,248,0.8);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
+  background: #d1d5db;
+  border-radius: 8px 8px 0 0;
+  padding: 8px 12px;
+  margin-bottom: 0;
 }
-.browser-dots {
+
+.mockup__dots {
   display: flex;
   gap: 5px;
   flex-shrink: 0;
 }
+
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 .dot--red    { background: #ff5f57; }
 .dot--yellow { background: #febc2e; }
 .dot--green  { background: #28c840; }
-.browser-url {
+
+
+.mockup__url {
   flex: 1;
-  height: 18px;
-  background: rgba(255,255,255,0.8);
-  border-radius: 6px;
-  border: 1px solid rgba(0,0,0,0.08);
+  height: 16px;
+  background: #e9ecef;
+  border-radius: 20px;
+  opacity: 0.7;
 }
-.browser-screen {
+
+.mockup__screen--browser {
   width: 100%;
-  aspect-ratio: 16/10;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   background: #f0f4ff;
 }
-.browser-screen img {
+
+.mockup__screen--browser img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
 }
-.main-card:hover .browser-screen img {
+
+.main-card:hover .mockup__screen--browser img {
   transform: scale(1.05);
 }
-.browser-placeholder {
+
+/* ── 폰 목업 ── */
+.mockup--phone {
+  background: linear-gradient(160deg, #eef2ff 0%, #dbeafe 60%, #e0e7ff 100%);
+  padding: 28px 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 260px;
+}
+
+.mockup__phone-shell {
+  position: relative;
+  width: 140px;
+  background: #f1f5f9;
+  border-radius: 28px;
+  border: 3px solid #cbd5e1;
+  box-shadow:
+    0 0 0 1px #e2e8f0,
+    0 16px 48px rgba(99,120,167,0.18),
+    inset 0 0 0 1px rgba(255,255,255,0.8);
+  overflow: hidden;
+  padding: 20px 0 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mockup__notch {
+  width: 48px;
+  height: 8px;
+  background: #cbd5e1;
+  border-radius: 0 0 8px 8px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.mockup__screen--phone {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: #fff;
+}
+
+.mockup__screen--phone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+}
+
+.main-card:hover .mockup__screen--phone img {
+  transform: scale(1.05);
+}
+
+
+.mockup__home-bar {
+  width: 44px;
+  height: 4px;
+  background: #cbd5e1;
+  border-radius: 2px;
+  margin-top: 10px;
+}
+
+
+.mockup__placeholder {
   width: 100%;
   height: 100%;
   display: flex;
@@ -336,6 +451,6 @@
   justify-content: center;
   background: linear-gradient(135deg, #f0f4ff, #e8eef8);
   color: #9ca3af;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
 }

@@ -1,0 +1,61 @@
+/* CustomCursor 비활성화 */
+
+
+/* ── 중심 도트 ── */
+.cursor-dot {
+  position: fixed;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  background: #4f8ef7;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  will-change: transform;
+  transition: width 0.15s ease, height 0.15s ease, top 0.15s ease, left 0.15s ease, background 0.2s ease;
+}
+
+.cursor-dot--hover {
+  width: 6px;
+  height: 6px;
+  top: -3px;
+  left: -3px;
+  background: #fff;
+}
+
+/* ── 추적 링 ── */
+.cursor-ring {
+  position: fixed;
+  top: -18px;
+  left: -18px;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(79, 142, 247, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  will-change: transform;
+  transition:
+    width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    top 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    left 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.cursor-ring--hover {
+  width: 56px;
+  height: 56px;
+  top: -28px;
+  left: -28px;
+  border-color: rgba(79, 142, 247, 0.35);
+  background: rgba(79, 142, 247, 0.06);
+}
+
+/* 터치 디바이스에서는 기본 커서 복원 */
+@media (pointer: coarse) {
+  * { cursor: auto !important; }
+  .cursor-dot, .cursor-ring { display: none; }
+}

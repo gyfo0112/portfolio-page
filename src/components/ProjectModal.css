@@ -38,28 +38,28 @@
 }
 
 .modal__close {
-  position: sticky;
+  position: absolute;
   top: 16px;
-  float: right;
-  margin: 16px 16px 0ifile 0;
+  right: 16px;
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(0,0,0,0.06);
-  border: none;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   cursor: pointer;
-  font-size: 14px;
-  color: #6b7280;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
-  z-index: 10;
+  z-index: 200;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
-
 .modal__close:hover {
-  background: rgba(0,0,0,0.12);
-  color: #0a0a0a;
+  background: rgba(0, 0, 0, 0.65);
+  transform: scale(1.08);
 }
 
 .modal__image {
@@ -68,7 +68,7 @@
   overflow: hidden;
   border-radius: 16px 16px 0 0;
   background: #f0f4ff;
-  margin-top: -52px;
+  margin-top: 0;
 }
 
 .modal__image img {
@@ -211,6 +211,34 @@
 [data-theme='dark'] .modal__detail { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.06); }
 [data-theme='dark'] .modal__section p,
 [data-theme='dark'] .modal__list li { color: #c8c9d8; }
-[data-theme='dark'] .modal__close { background: rgba(255,255,255,0.08); color: #8889a0; }
-[data-theme='dark'] .modal__close:hover { background: rgba(255,255,255,0.14); color: #e8e9f2; }
+
+.modal__close:hover {
+  background: rgba(0, 0, 0, 0.65);
+  transform: scale(1.08);
+}
 [data-theme='dark'] .modal__btn--ghost { background: rgba(255,255,255,0.06); color: #c8c9d8; border-color: rgba(255,255,255,0.1); }
+
+[data-theme='dark'] .modal__close {
+  background: rgba(0, 0, 0, 0.55) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+[data-theme='dark'] .modal__close:hover {
+  background: rgba(255, 255, 255, 0.35) !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 640px) {
+  .modal-overlay { padding: 0; align-items: flex-end; }
+  .modal {
+    max-width: 100%;
+    max-height: 92vh;
+    border-radius: 20px 20px 0 0;
+  }
+  .modal__image { border-radius: 20px 20px 0 0; }
+  .modal__body { padding: 20px 20px 28px; gap: 14px; }
+  .modal__title { font-size: 22px; }
+  .modal__links { flex-direction: column; gap: 10px; }
+  .modal__btn { width: 100%; justify-content: center; }
+  .modal__detail { padding: 16px; gap: 16px; }
+}

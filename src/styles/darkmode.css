@@ -4,25 +4,33 @@
 [data-theme='dark'] .blob--3 { background: rgba(90,130,240,0.1); filter: blur(85px); }
 [data-theme='dark'] .navbar,
 [data-theme='dark'] .navbar--floating { background: rgba(8,9,16,0.65) !important; border-color: rgba(255,255,255,0.07) !important; box-shadow: 0 8px 32px rgba(0,0,0,0.4) !important; }
-[data-theme='dark'] .skill-card,
-[data-theme='dark'] .contact-card,
-[data-theme='dark'] .about__info,
-[data-theme='dark'] .main-card,
-[data-theme='dark'] .main-card__body,
-  [data-theme='dark'] .mini-card,
-[data-theme='dark'] .footer,
-  [data-theme='dark'] .scroll-to-top,
-[data-theme='dark'] .theme-toggle { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.07) !important; box-shadow: 0 4px 24px rgba(0,0,0,0.3) !important; }
+
+/* 카드/폼 배경 → glass.css에서 통합 관리 */
+/* 다크모드 텍스트/아이콘 색상만 여기서 처리 */
+
+
+/* main-card__body: backdrop-filter 중첩 깜빡임 방지 → transparent 유지 */
+[data-theme='dark'] .main-card__body { background: transparent !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+
 [data-theme='dark'] .info-row { border-bottom-color: rgba(255,255,255,0.05) !important; }
 [data-theme='dark'] .info-row:hover { background: rgba(79,142,247,0.05) !important; }
 [data-theme='dark'] .contact-card:hover { border-color: rgba(106,163,248,0.2) !important; box-shadow: 0 8px 32px rgba(0,0,0,0.4) !important; }
 [data-theme='dark'] .main-card:hover { border-color: rgba(106,163,248,0.15) !important; box-shadow: 0 24px 56px rgba(0,0,0,0.5) !important; }
 [data-theme='dark'] .mini-card:hover { border-color: rgba(106,163,248,0.15) !important; box-shadow: 0 12px 32px rgba(0,0,0,0.4) !important; }
 [data-theme='dark'] .skill-card:hover { border-color: rgba(106,163,248,0.15) !important; box-shadow: 0 16px 40px rgba(0,0,0,0.4) !important; }
-[data-theme='dark'] .browser-mockup { background: rgba(255,255,255,0.03) !important; border-bottom-color: rgba(255,255,255,0.06) !important; }
-[data-theme='dark'] .browser-bar { background: rgba(5,6,12,0.9) !important; border-bottom-color: rgba(255,255,255,0.05) !important; }
-[data-theme='dark'] .skill-pill { background: rgba(255,255,255,0.05) !important; border-color: rgba(255,255,255,0.07) !important; color: #8889a0 !important; }
-[data-theme='dark'] .skill-pill:hover { background: rgba(79,142,247,0.12) !important; border-color: #6aa3f8 !important; color: #6aa3f8 !important; }
+
+/* ── 다크모드 목업 (새 클래스) ── */
+[data-theme='dark'] .mockup--browser { background: rgba(5,6,12,0.9) !important; }
+[data-theme='dark'] .mockup__bar { background: rgba(10,11,20,0.95) !important; border-bottom-color: rgba(255,255,255,0.05) !important; }
+[data-theme='dark'] .mockup__url { background: rgba(255,255,255,0.07) !important; }
+
+/* 폰 목업: 다크모드에서도 라이트 색감 유지 (이미지가 밝으므로) */
+[data-theme='dark'] .mockup--phone { background: linear-gradient(160deg, #1e2a3a 0%, #141c2a 60%, #1a2035 100%) !important; }
+[data-theme='dark'] .mockup__phone-shell { background: #1e2535 !important; border-color: #2d3748 !important; box-shadow: 0 0 0 1px #374151, 0 16px 48px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(255,255,255,0.05) !important; }
+[data-theme='dark'] .mockup__notch { background: #0f172a !important; }
+[data-theme='dark'] .mockup__home-bar { background: #374151 !important; }
+
+/* skill-pill 다크모드 → glass.css 에서 처리 */
 [data-theme='dark'] .main-card__links { border-top-color: rgba(255,255,255,0.05) !important; }
 [data-theme='dark'] .footer { border-top-color: rgba(255,255,255,0.06) !important; }
 [data-theme='dark'] .navbar__logo { color: #e8e9f2; }
@@ -33,9 +41,10 @@
 [data-theme='dark'] .hero__tagline { color: #8889a0; }
 [data-theme='dark'] .hero__badge { background: rgba(79,142,247,0.12); color: #6aa3f8; }
 [data-theme='dark'] .orbit-tag { background: rgba(12,13,20,0.9); border-color: rgba(106,163,248,0.2); color: #e8e9f2; }
-[data-theme='dark'] .orbit-ring--1 { border-color: rgba(106,163,248,0.3); }
-[data-theme='dark'] .orbit-ring--2 { border-color: rgba(106,163,248,0.15); }
-[data-theme='dark'] .orbit-ring--3 { border-color: rgba(106,163,248,0.08); }
+[data-theme='dark'] .nano-particle {
+  background: radial-gradient(circle at 35% 35%, #bfdbfe, #60a5fa) !important;
+  box-shadow: 0 0 6px rgba(96,165,250,1), 0 0 16px rgba(0,200,255,0.55) !important;
+}
 [data-theme='dark'] .about__heading { color: #e8e9f2; }
 [data-theme='dark'] .about__bio { color: #8889a0; }
 [data-theme='dark'] .about__contact-title { color: #e8e9f2; }
@@ -67,3 +76,27 @@
 [data-theme='dark'] .about__status { background: rgba(34,197,94,0.08) !important; border-color: rgba(34,197,94,0.15) !important; color: #4ade80 !important; }
 .scroll-to-top.visible:hover { background: #4f8ef7 !important; color: white !important; box-shadow: 0 8px 28px rgba(79,142,247,0.35) !important; transform: translateY(-3px) !important; opacity: 1 !important; }
 .theme-toggle__icon { font-size: 16px; line-height: 1; font-family: sans-serif; }
+
+[data-theme='dark'] .modal__close {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+[data-theme='dark'] .modal__close:hover {
+  background: rgba(255, 255, 255, 0.35) !important;
+  color: #ffffff !important;
+}
+
+/* ── 다크모드: 햄버거 & 모바일 메뉴 ── */
+[data-theme='dark'] .navbar__hamburger span { background: #e8e9f2; }
+[data-theme='dark'] .navbar__mobile-menu {
+  background: rgba(8, 9, 16, 0.97) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.07) !important;
+}
+[data-theme='dark'] .navbar__mobile-link {
+  color: #8889a0;
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+[data-theme='dark'] .navbar__mobile-link.active,
+[data-theme='dark'] .navbar__mobile-link:hover { color: #e8e9f2; }

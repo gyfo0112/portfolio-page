@@ -104,8 +104,98 @@
 @media (max-width: 1280px) {
   .navbar { padding: 0 80px; }
 }
+
+/* ── 햄버거 버튼 ── */
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+}
+.navbar__hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #0a0a0a;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.navbar__hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar__hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.navbar__hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── 모바일 드롭다운 메뉴 ── */
+.navbar__mobile-menu {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 8px 24px 24px;
+  z-index: 998;
+  animation: mobileMenuIn 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.navbar__mobile-menu--open {
+  display: flex;
+}
+@keyframes mobileMenuIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.navbar__mobile-link {
+  font-size: 16px;
+  font-weight: 500;
+  color: #6b7280;
+  text-decoration: none;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  transition: color 0.2s ease;
+}
+.navbar__mobile-link.active,
+.navbar__mobile-link:hover {
+  color: #0a0a0a;
+}
+.navbar__mobile-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  background: #4f8ef7;
+  color: white;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 16px;
+  font-family: 'Noto Sans KR', sans-serif;
+  transition: background 0.3s ease;
+}
+.navbar__mobile-cta:hover { background: #3a7ae0; }
+
+/* ── 모바일 미디어쿼리 ── */
 @media (max-width: 768px) {
-  .navbar { padding: 0 24px; }
-  .navbar__links { gap: 20px; }
-  .navbar--floating { max-width: calc(100% - 48px); }
+  .navbar { padding: 0 20px; }
+  .navbar--floating { max-width: calc(100% - 40px); }
+  .navbar__links { display: none; }
+  .navbar__cta { display: none; }
+  .navbar__hamburger { display: flex; }
 }

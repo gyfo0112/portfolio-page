@@ -8,10 +8,8 @@
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(79, 142, 247, 0.25);
+  border: none;
   color: #4f8ef7;
-  font-size: 20px;
-  font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -19,18 +17,67 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
   pointer-events: none;
   z-index: 999;
 }
+
 .scroll-to-top.visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: all;
 }
+
 .scroll-to-top:hover {
   background: #4f8ef7;
   color: white;
-  box-shadow: 0 8px 28px rgba(79, 142, 247, 0.35);
+  box-shadow: 0 8px 28px rgba(79, 142, 247, 0.4);
   transform: translateY(-3px);
+}
+
+/* SVG 링 */
+.scroll-to-top__ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* 트랙 (배경 원) */
+.scroll-to-top__track {
+  stroke: rgba(79, 142, 247, 0.15);
+}
+
+/* 진행 원 — JS ref로 직접 제어하므로 transition 없음 */
+.scroll-to-top__progress {
+  /* transition 없음: 실시간 즉시 반영 */
+}
+
+/* 호버 시 링 색상 → 흰색으로 */
+.scroll-to-top:hover .scroll-to-top__track {
+  stroke: rgba(255, 255, 255, 0.2);
+}
+.scroll-to-top:hover .scroll-to-top__progress {
+  stroke: rgba(255, 255, 255, 0.9);
+}
+
+/* 화살표 아이콘 */
+.scroll-to-top__arrow {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 36px;
+    right: 20px;
+  }
 }
